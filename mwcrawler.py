@@ -37,7 +37,7 @@ now		= datetime.datetime.now()
 str(now)
 
 # maximum wait time of http gets
-timeout	= 15
+timeout	= 30
 socket.setdefaulttimeout(timeout)
 
 # load thug function, also checks if thug is installed
@@ -91,9 +91,10 @@ def decisor(url):
 				return
 
 	else:
-		dest = '/opt/malware/unsorted/'+filetype
-		fpath = dest+'/'+str(md5)
+		dest = '/opt/mwcrawler/unsorted/'+filetype +'/'+md5[:3]+"/"+md5[3:6]+"/"+md5[6:9]+"/"
+		fpath = dest+str(md5)
 
+		print "Saving to" + dest
 		if not os.path.exists(dest):
 			os.makedirs(dest)
 
